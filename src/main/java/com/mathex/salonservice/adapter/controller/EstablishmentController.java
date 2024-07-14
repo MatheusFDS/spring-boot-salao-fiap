@@ -3,7 +3,6 @@ package com.mathex.salonservice.adapter.controller;
 import com.mathex.salonservice.domain.model.Establishment;
 import com.mathex.salonservice.usecase.EstablishmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +20,22 @@ public class EstablishmentController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public Establishment createEstablishment(@RequestBody Establishment establishment) {
         return establishmentService.saveEstablishment(establishment);
+    }
+
+    @GetMapping("/searchByLocation")
+    public List<Establishment> getEstablishmentsByLocation(@RequestParam String location) {
+        return establishmentService.findByLocation(location);
+    }
+
+    @PutMapping("/{id}")
+    public Establishment updateEstablishment(@PathVariable Long id, @RequestBody Establishment establishment) {
+        return establishmentService.updateEstablishment(id, establishment);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteEstablishment(@PathVariable Long id) {
+        establishmentService.deleteEstablishment(id);
     }
 }

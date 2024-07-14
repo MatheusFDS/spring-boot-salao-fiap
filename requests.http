@@ -1,49 +1,179 @@
-### Obter todos os estabelecimentos
-GET http://localhost:8080/api/establishments
-Authorization: Basic dXNlcjpwYXNzd29yZA==
-
-### Criar um novo estabelecimento
+###
 POST http://localhost:8080/api/establishments
 Content-Type: application/json
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-  "name": "Salão XYZ",
-  "address": "Rua 123",
-  "services": "Corte, Tintura",
-  "professionals": "Ana, João",
+  "name": "Salão de Beleza",
+  "address": "Rua Principal, 123",
+  "services": "Corte de cabelo, Manicure",
+  "professionals": "João, Maria",
   "operatingHours": "09:00 - 18:00",
-  "photos": "photo1.jpg,photo2.jpg"
+  "photos": "link_da_foto.jpg",
+  "location": "Centro"
 }
 
-### Obter todos os estabelecimentos (novamente, para verificar a criação)
+###
 GET http://localhost:8080/api/establishments
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
+###
+GET http://localhost:8080/api/establishments/searchByLocation?location=Centro
+Authorization: Basic dXNlcjpwYXNzd29yZA==
 
-### Criar um novo profissional
+###
+PUT http://localhost:8080/api/establishments/1
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "name": "Salão de Beleza Atualizado",
+  "address": "Rua Principal, 456",
+  "services": "Corte de cabelo, Pedicure",
+  "professionals": "João, Maria, Pedro",
+  "operatingHours": "08:00 - 17:00",
+  "photos": "link_da_foto_atualizado.jpg",
+  "location": "Centro"
+}
+
+###
+DELETE http://localhost:8080/api/establishments/1
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+
+###
 POST http://localhost:8080/api/professionals
 Content-Type: application/json
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-  "name": "Ana",
-  "specialty": "Corte de cabelo",
+  "name": "Maria",
+  "specialty": "Cabelereira",
   "availableHours": "09:00 - 18:00",
-  "rates": "R$100,00 por corte"
+  "rates": "100"
 }
 
+###
+GET http://localhost:8080/api/professionals
+Authorization: Basic dXNlcjpwYXNzd29yZA==
 
-### Criar um novo agendamento
+###
+GET http://localhost:8080/api/professionals/searchBySpecialty?specialty=Cabelereira
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+GET http://localhost:8080/api/professionals/searchByAvailableHours?availableHours=09:00 - 18:00
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+PUT http://localhost:8080/api/professionals/1
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "name": "Maria Atualizada",
+  "specialty": "Manicure",
+  "availableHours": "08:00 - 17:00",
+  "rates": "120"
+}
+
+###
+DELETE http://localhost:8080/api/professionals/1
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+
+###
 POST http://localhost:8080/api/appointments
 Content-Type: application/json
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
-  "professionalId": 1,
-  "clientId": 1,
-  "appointmentDate": "2024-07-15",
+  "appointmentDate": "2024-07-20",
   "appointmentTime": "10:00",
+  "clientId": 1,
+  "professionalId": 2,
   "services": "Corte de cabelo",
   "status": "Agendado"
 }
+
+###
+GET http://localhost:8080/api/appointments
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+GET http://localhost:8080/api/appointments/1
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+PUT http://localhost:8080/api/appointments/1
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "appointmentDate": "2024-07-21",
+  "appointmentTime": "11:00",
+  "clientId": 1,
+  "professionalId": 2,
+  "services": "Corte de cabelo",
+  "status": "Confirmado"
+}
+
+###
+DELETE http://localhost:8080/api/appointments/1
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+
+###
+POST http://localhost:8080/api/reviews
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "clientId": 1,
+  "establishmentId": 1,
+  "professionalId": 1,
+  "rating": 5,
+  "comment": "Excelente serviço!"
+}
+
+###
+GET http://localhost:8080/api/reviews
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+GET http://localhost:8080/api/reviews/1
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+GET http://localhost:8080/api/reviews/establishment/1
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+GET http://localhost:8080/api/reviews/professional/1
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+PUT http://localhost:8080/api/reviews/1
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "clientId": 1,
+  "establishmentId": 1,
+  "professionalId": 1,
+  "rating": 4,
+  "comment": "Bom serviço, mas poderia melhorar."
+}
+
+###
+DELETE http://localhost:8080/api/reviews/1
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+
+###
+GET http://localhost:8080/api/search/establishments?keyword=Salão
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+GET http://localhost:8080/api/search/professionals?keyword=Cabelereira
+Authorization: Basic dXNlcjpwYXNzd29yZA==

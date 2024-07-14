@@ -1,9 +1,14 @@
 package com.mathex.salonservice.domain.repository;
 
 import com.mathex.salonservice.domain.model.Establishment;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-public interface EstablishmentRepository {
-    List<Establishment> findAll();
-    Establishment save(Establishment establishment);
+@Repository
+public interface EstablishmentRepository extends JpaRepository<Establishment, Long> {
+    List<Establishment> findByNameContainingIgnoreCaseOrServicesContainingIgnoreCase(String name, String services);
+
+    List<Establishment> findByLocation(String location);
 }

@@ -1,9 +1,9 @@
 package com.mathex.salonservice.domain.repository;
 
 import com.mathex.salonservice.domain.model.Appointment;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface AppointmentRepository {
-    List<Appointment> findAll();
-    Appointment save(Appointment appointment);
+@Repository
+public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 }

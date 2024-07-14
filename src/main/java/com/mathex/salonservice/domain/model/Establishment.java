@@ -25,4 +25,5 @@ public class Establishment {
     private String professionals;
     private String operatingHours;
     private String photos;
+    private String location;
 }

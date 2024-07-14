@@ -20,4 +20,27 @@ public class EstablishmentService {
     public Establishment saveEstablishment(Establishment establishment) {
         return establishmentRepository.save(establishment);
     }
+
+    public List<Establishment> findByLocation(String location) {
+        return establishmentRepository.findByLocation(location);
+    }
+
+    public Establishment updateEstablishment(Long id, Establishment updatedEstablishment) {
+        return establishmentRepository.findById(id)
+                .map(establishment -> {
+                    establishment.setName(updatedEstablishment.getName());
+                    establishment.setAddress(updatedEstablishment.getAddress());
+                    establishment.setServices(updatedEstablishment.getServices());
+                    establishment.setProfessionals(updatedEstablishment.getProfessionals());
+                    establishment.setOperatingHours(updatedEstablishment.getOperatingHours());
+                    establishment.setPhotos(updatedEstablishment.getPhotos());
+                    establishment.setLocation(updatedEstablishment.getLocation());
+                    return establishmentRepository.save(establishment);
+                })
+                .orElseThrow(() -> new IllegalArgumentException("Establishment not found"));
+    }
+
+    public void deleteEstablishment(Long id) {
+        establishmentRepository.deleteById(id);
+    }
 }

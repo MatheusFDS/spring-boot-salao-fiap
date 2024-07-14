@@ -1,7 +1,7 @@
 package com.mathex.salonservice.adapter.repository;
 
-import com.mathex.salonservice.domain.model.Establishment;
-import com.mathex.salonservice.domain.repository.EstablishmentRepository;
+import com.mathex.salonservice.domain.model.Review;
+import com.mathex.salonservice.domain.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -15,28 +15,30 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Repository
-public class JpaEstablishmentRepository implements EstablishmentRepository {
+public class JpaReviewRepository implements ReviewRepository {
 
     @Autowired
-    private SpringDataEstablishmentRepository repository;
+    private SpringDataReviewRepository repository;
 
     @Override
-    public List<Establishment> findAll() {
+    public List<Review> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Establishment save(Establishment establishment) {
-        return repository.save(establishment);
+    public Review save(Review review) {
+        return repository.save(review);
     }
-
 
     @Override
-    public List<Establishment> findByLocation(String location) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByLocation'");
+    public List<Review> findByEstablishmentId(Long establishmentId) {
+        return repository.findByEstablishmentId(establishmentId);
     }
 
+    @Override
+    public List<Review> findByProfessionalId(Long professionalId) {
+        return repository.findByProfessionalId(professionalId);
+    }
 
     @Override
     public void deleteAllByIdInBatch(Iterable<Long> ids) {
@@ -51,19 +53,19 @@ public class JpaEstablishmentRepository implements EstablishmentRepository {
     }
 
     @Override
-    public void deleteAllInBatch(Iterable<Establishment> entities) {
+    public void deleteAllInBatch(Iterable<Review> entities) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteAllInBatch'");
     }
 
     @Override
-    public <S extends Establishment> List<S> findAll(Example<S> example) {
+    public <S extends Review> List<S> findAll(Example<S> example) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public <S extends Establishment> List<S> findAll(Example<S> example, Sort sort) {
+    public <S extends Review> List<S> findAll(Example<S> example, Sort sort) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
@@ -75,49 +77,49 @@ public class JpaEstablishmentRepository implements EstablishmentRepository {
     }
 
     @Override
-    public Establishment getById(Long arg0) {
+    public Review getById(Long arg0) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getById'");
     }
 
     @Override
-    public Establishment getOne(Long arg0) {
+    public Review getOne(Long arg0) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getOne'");
     }
 
     @Override
-    public Establishment getReferenceById(Long id) {
+    public Review getReferenceById(Long id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getReferenceById'");
     }
 
     @Override
-    public <S extends Establishment> List<S> saveAllAndFlush(Iterable<S> entities) {
+    public <S extends Review> List<S> saveAllAndFlush(Iterable<S> entities) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveAllAndFlush'");
     }
 
     @Override
-    public <S extends Establishment> S saveAndFlush(S entity) {
+    public <S extends Review> S saveAndFlush(S entity) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveAndFlush'");
     }
 
     @Override
-    public <S extends Establishment> List<S> saveAll(Iterable<S> entities) {
+    public <S extends Review> List<S> saveAll(Iterable<S> entities) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveAll'");
     }
 
     @Override
-    public List<Establishment> findAllById(Iterable<Long> ids) {
+    public List<Review> findAllById(Iterable<Long> ids) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAllById'");
     }
 
     @Override
-    public Optional<Establishment> findById(Long id) {
+    public Optional<Review> findById(Long id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
@@ -141,7 +143,7 @@ public class JpaEstablishmentRepository implements EstablishmentRepository {
     }
 
     @Override
-    public void delete(Establishment entity) {
+    public void delete(Review entity) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
@@ -153,7 +155,7 @@ public class JpaEstablishmentRepository implements EstablishmentRepository {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends Establishment> entities) {
+    public void deleteAll(Iterable<? extends Review> entities) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteAll'");
     }
@@ -165,46 +167,44 @@ public class JpaEstablishmentRepository implements EstablishmentRepository {
     }
 
     @Override
-    public List<Establishment> findAll(Sort sort) {
+    public List<Review> findAll(Sort sort) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public Page<Establishment> findAll(Pageable pageable) {
+    public Page<Review> findAll(Pageable pageable) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public <S extends Establishment> Optional<S> findOne(Example<S> example) {
+    public <S extends Review> Optional<S> findOne(Example<S> example) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findOne'");
     }
 
     @Override
-    public <S extends Establishment> Page<S> findAll(Example<S> example, Pageable pageable) {
+    public <S extends Review> Page<S> findAll(Example<S> example, Pageable pageable) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 
     @Override
-    public <S extends Establishment> long count(Example<S> example) {
+    public <S extends Review> long count(Example<S> example) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'count'");
     }
 
     @Override
-    public <S extends Establishment> boolean exists(Example<S> example) {
+    public <S extends Review> boolean exists(Example<S> example) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'exists'");
     }
 
     @Override
-    public <S extends Establishment, R> R findBy(Example<S> example,
-            Function<FetchableFluentQuery<S>, R> queryFunction) {
+    public <S extends Review, R> R findBy(Example<S> example, Function<FetchableFluentQuery<S>, R> queryFunction) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findBy'");
     }
-
 }

@@ -11,18 +11,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "appointments")
+@Table(name = "reviews")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Appointment {
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String appointmentDate;
-    private String appointmentTime;
     private Long clientId;
+    private Long establishmentId;
     private Long professionalId;
-    private String services;
-    private String status;
+    private int rating;
+    private String comment;
 }
