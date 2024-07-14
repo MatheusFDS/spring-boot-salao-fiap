@@ -1,0 +1,49 @@
+### Obter todos os estabelecimentos
+GET http://localhost:8080/api/establishments
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+### Criar um novo estabelecimento
+POST http://localhost:8080/api/establishments
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "name": "Salão XYZ",
+  "address": "Rua 123",
+  "services": "Corte, Tintura",
+  "professionals": "Ana, João",
+  "operatingHours": "09:00 - 18:00",
+  "photos": "photo1.jpg,photo2.jpg"
+}
+
+### Obter todos os estabelecimentos (novamente, para verificar a criação)
+GET http://localhost:8080/api/establishments
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+
+### Criar um novo profissional
+POST http://localhost:8080/api/professionals
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "name": "Ana",
+  "specialty": "Corte de cabelo",
+  "availableHours": "09:00 - 18:00",
+  "rates": "R$100,00 por corte"
+}
+
+
+### Criar um novo agendamento
+POST http://localhost:8080/api/appointments
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+  "professionalId": 1,
+  "clientId": 1,
+  "appointmentDate": "2024-07-15",
+  "appointmentTime": "10:00",
+  "services": "Corte de cabelo",
+  "status": "Agendado"
+}
