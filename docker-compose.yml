@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: fiap
+      POSTGRES_USER: mathex
+      POSTGRES_PASSWORD: Ma241194
+    volumes:
+      - ./data:/var/lib/postgresql/data

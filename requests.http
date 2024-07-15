@@ -177,3 +177,31 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 ###
 GET http://localhost:8080/api/search/professionals?keyword=Cabelereira
 Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+
+### Add event to Google Calendar
+POST http://localhost:8080/api/calendar/google
+Content-Type: application/json
+
+{
+  "summary": "Haircut Appointment",
+  "location": "Salon XYZ",
+  "description": "Haircut with John Doe",
+  "startDateTime": "2024-07-15T10:00:00-07:00",
+  "endDateTime": "2024-07-15T11:00:00-07:00"
+}
+
+### Add event to Google Calendar
+POST http://localhost:8080/api/calendar/google
+Content-Type: application/json
+Authorization: Basic base64encoded(username:password)
+
+{
+  "summary": "Haircut Appointment",
+  "location": "Salon XYZ",
+  "description": "Haircut with John Doe",
+  "startDateTime": "2024-07-15T10:00:00-07:00",
+  "endDateTime": "2024-07-15T11:00:00-07:00"
+}
+
+

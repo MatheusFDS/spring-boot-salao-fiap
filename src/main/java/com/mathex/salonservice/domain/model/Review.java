@@ -20,8 +20,8 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long clientId;
+    private String comment;
     private Long establishmentId;
     private Long professionalId;
     private int rating;
-    private String comment;
 }

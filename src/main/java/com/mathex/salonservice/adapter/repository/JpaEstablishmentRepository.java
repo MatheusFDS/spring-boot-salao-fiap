@@ -207,4 +207,11 @@ public class JpaEstablishmentRepository implements EstablishmentRepository {
         throw new UnsupportedOperationException("Unimplemented method 'findBy'");
     }
 
+    @Override
+    public List<Establishment> findByNameContainingIgnoreCaseOrServicesContainingIgnoreCase(String name,
+            String services) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByNameContainingIgnoreCaseOrServicesContainingIgnoreCase'");
+    }
+
 }

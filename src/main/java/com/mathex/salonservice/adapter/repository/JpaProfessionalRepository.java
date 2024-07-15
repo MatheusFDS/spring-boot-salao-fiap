@@ -210,4 +210,11 @@ public class JpaProfessionalRepository implements ProfessionalRepository {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findOne'");
     }
+
+    @Override
+    public List<Professional> findByNameContainingIgnoreCaseOrSpecialtyContainingIgnoreCase(String name,
+            String specialty) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByNameContainingIgnoreCaseOrSpecialtyContainingIgnoreCase'");
+    }
 }
